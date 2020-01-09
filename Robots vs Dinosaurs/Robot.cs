@@ -49,23 +49,14 @@ namespace Robots_vs_Dinosaurs
 
         public void Attack(Dinosaur dinosaur)
         {
-            if (power < 15)
-            {
-                Console.WriteLine("Sorry, your attack power is not high enough. You'll need to recharge before you can attack again");
-                Console.ReadLine();
-            }
-            else
-            {
-                power -= 15;
-                // don't let this go negative
-            }
-            dinosaur.health -= weapon.damage;
+            power -= 15;
+            dinosaur.health -= gun.damage;
         }
 
-        public void Recharge()
-        {
-            health += 15;
-            power += 15;
-        }
+        //public void Recharge()
+        //{
+        //    health += 15;
+        //    power += 15;
+        //}
     }
 }

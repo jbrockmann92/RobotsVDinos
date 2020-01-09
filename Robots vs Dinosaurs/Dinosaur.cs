@@ -12,7 +12,7 @@ namespace Robots_vs_Dinosaurs
         public double health;
         double energy;
         public double attackPower;
-        Dinosaur dinosaur;
+        
 
         public Dinosaur(string type, double health, double energy, double attackPower)
         {
@@ -24,19 +24,18 @@ namespace Robots_vs_Dinosaurs
 
         public void Attack(Robot robot)
         {
-            if (energy < 0)
+            if (energy >= 15)
             {
                 energy -= 15;
-                // don't let this go negative
+                robot.health -= attackPower;
             }
-            robot.health -= dinosaur.attackPower;
         }
 
-        public void Rest()
-        {
-            health += 15;
-            energy += 15;
-        }
+        //public void Rest()
+        //{
+        //    health += 15;
+        //    energy += 15;
+        //}
 
 
     }
