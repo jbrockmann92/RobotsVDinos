@@ -30,17 +30,6 @@ namespace Robots_vs_Dinosaurs
             randomAttack = attackChoice;
         }
 
-        //public void PickUpWeapon()
-        //{
-
-        //    Console.WriteLine("What weapon would you like to use?");
-        //    foreach (Weapon weapon in weapons)
-        //    {
-        //        Console.WriteLine(weapon.weaponName);
-        //    }
-        //    weaponChoice = int.Parse(Console.ReadLine());
-        //}
-
         public void Attack(Robot robot)
         {
             ChooseAttack();
@@ -67,14 +56,5 @@ namespace Robots_vs_Dinosaurs
                 Console.WriteLine("Your attack missed!");
             }
         }
-
-        
-        //public void Rest()
-        //{
-        //    health += 15;
-        //    energy += 15;
-        //}
-
-
     }
 }

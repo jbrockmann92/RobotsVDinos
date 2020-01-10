@@ -35,8 +35,6 @@ namespace Robots_vs_Dinosaurs
             weapons.Add(mace);
         }
 
-        //I don't think I want to pick up a weapon here. I think I want to do it either in the fleet or battlefield class
-
         public void PickUpWeapon()
         {
 
@@ -73,11 +71,5 @@ namespace Robots_vs_Dinosaurs
                 Console.WriteLine("Your attack missed!");
             }
         }
-
-        //public void Recharge()
-        //{
-        //    health += 15;
-        //    power += 15;
-        //}
     }
 }

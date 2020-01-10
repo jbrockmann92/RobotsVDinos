@@ -21,8 +21,6 @@ namespace Robots_vs_Dinosaurs
             int brachHealth = rnd.Next(90, 111);
             int brachPower = rnd.Next(30, 41);
             dinosaurs = new List<Dinosaur>() { new Dinosaur("0) T-Rex", rexHealth, 50, rexPower), new Dinosaur("1) Triceratops", triHealth, 30, triPower), new Dinosaur("2) Brachiosaurus", brachHealth, 30, brachPower) };
-            //I think the power attribute is now unnecessary since dinos will be attacking with one of three options
-            //currently means that one or even two could have some health and the game would still end. Fix later
             herdHP = dinosaurs[0].health + dinosaurs[1].health + dinosaurs[2].health;
         }
         public void CalcHerdHp()

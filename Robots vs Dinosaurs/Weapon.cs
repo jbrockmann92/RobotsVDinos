@@ -8,10 +8,8 @@ namespace Robots_vs_Dinosaurs
 {
     class Weapon
     {
-        //I think I want a list of weapons as well. Each should have attributes. Assign one weapon to each robot at this point
         public double damage;
         public string weaponName;
-        //double accuracy;???
 
         public Weapon(double damage, string weaponName)
         {

@@ -16,7 +16,9 @@ namespace Robots_vs_Dinosaurs
             dinoHerd = new Herd();
             robotFleet = new Fleet();
         }
-        public void RunSimulation() //should I put each fighter's stats up on the screen as well? Attack power, etc.?
+
+
+        public void RunSimulation()
         {
             Fleet fleet = new Fleet();
             Herd herd = new Herd();
@@ -30,6 +32,16 @@ namespace Robots_vs_Dinosaurs
                 Console.WriteLine("Too bad. We're going to play anyway");
                 Console.WriteLine();
             }
+
+            foreach (Robot robot in fleet.robots)
+            {
+                Console.WriteLine($"{robot.name} health is {robot.health}");
+            }
+            foreach (Dinosaur dinosaur in herd.dinosaurs)
+            {
+                Console.WriteLine($"{dinosaur.type} health is {dinosaur.health} and attack power is {dinosaur.attackPower}");
+            }
+            Console.WriteLine(" ");
 
             while (fleet.fleetHP > 0 && herd.herdHP > 0)
             {
@@ -56,8 +68,6 @@ namespace Robots_vs_Dinosaurs
                 int randomVictim = rnd.Next(0, 3);
 
                 herd.dinosaurs[randomAttack].Attack(fleet.robots[randomVictim]);
-
-                //create special attacks for the dinosaurs to hit the robots with. Maybe a 1/10 chance of hitting with a power attack or something
 
                 Console.WriteLine(" ");
                 Console.WriteLine($"{herd.dinosaurs[randomAttack].type} successfully hit {fleet.robots[randomVictim].name}");
