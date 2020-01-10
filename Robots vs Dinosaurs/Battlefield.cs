@@ -8,13 +8,13 @@ namespace Robots_vs_Dinosaurs
 {
     class Battlefield
     {
-        Herd dinosaurs;
-        Fleet robots;
+        Herd dinoHerd;
+        Fleet robotFleet;
 
         public Battlefield()
         {
-            dinosaurs = new Herd();
-            robots = new Fleet();
+            dinoHerd = new Herd();
+            robotFleet = new Fleet();
         }
         public void RunSimulation() //master
         {
@@ -27,9 +27,20 @@ namespace Robots_vs_Dinosaurs
             while (fleet.fleetHP > 0 && herd.herdHP > 0)
             {
                 Console.WriteLine("Which dinosaur would you like to attack?");
+                foreach (Dinosaur dinosaur in dinoHerd.dinosaurs)
+                {
+                    Console.WriteLine(dinosaur.type);
+                }
                 int attackChoice = int.Parse(Console.ReadLine());
+
                 Console.WriteLine("Which robot would you like to attack with?");
+                foreach (Robot robot in robotFleet.robots)
+                {
+                    Console.WriteLine(robot.name);
+                }
+
                 int attackerChoice = int.Parse(Console.ReadLine());
+
                 fleet.robots[attackerChoice].Attack(herd.dinosaurs[attackChoice]);
                 Console.WriteLine("You successfully hit " + $"{herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
                 //why doesn't this one work? I should be able to put herd.dinosaurs.type or fleet.robots.name

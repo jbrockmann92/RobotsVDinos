@@ -24,9 +24,9 @@ namespace Robots_vs_Dinosaurs
             this.power = power;
             this.health = health;
 
-            gun = new Weapon(50, "Gun");
-            knife = new Weapon(25, "Knife");
-            mace = new Weapon(75, "Mace");
+            gun = new Weapon(50, "0) Gun");
+            knife = new Weapon(25, "1) Knife");
+            mace = new Weapon(75, "2) Mace");
 
             weapons.Add(gun);
             weapons.Add(knife);
@@ -39,6 +39,10 @@ namespace Robots_vs_Dinosaurs
         {
 
             Console.WriteLine("What weapon would you like to use?");
+            foreach (Weapon weapon in weapons)
+            {
+                Console.WriteLine(weapon.weaponName);
+            }
             weaponChoice = int.Parse(Console.ReadLine());
             
             //weapons = new List<Weapon>() { new Weapon(45, "Gun"), new Weapon(25, "Knife"), new Weapon(65, "Mace")};
