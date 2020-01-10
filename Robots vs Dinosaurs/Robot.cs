@@ -46,15 +46,7 @@ namespace Robots_vs_Dinosaurs
                 Console.WriteLine(weapon.weaponName);
             }
             weaponChoice = int.Parse(Console.ReadLine());
-            
-            //weapons = new List<Weapon>() { new Weapon(45, "Gun"), new Weapon(25, "Knife"), new Weapon(65, "Mace")};
-            
-            //Console.WriteLine("What weapon would you like to use?");
-            //Console.WriteLine("");
         }
-
-        //how can I call the weapon attribute generally, not just the individual gun, etc.?
-        //have player input a number for their weapon choice, then put it in the index below that has weapons[1] at the moment
 
         public void Attack(Dinosaur dinosaur)
         {

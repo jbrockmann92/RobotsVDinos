@@ -23,7 +23,8 @@ namespace Robots_vs_Dinosaurs
             
             Console.WriteLine("You're on the robot team, and you'll be fighting the dinosaurs. Ready?");
             string readyOrNot = Console.ReadLine();
-            if (readyOrNot == "No")
+            readyOrNot = readyOrNot.ToLower();
+            if (readyOrNot == "no")
             {
                 Console.WriteLine();
                 Console.WriteLine("Too bad. We're going to play anyway");
@@ -48,7 +49,6 @@ namespace Robots_vs_Dinosaurs
                 int attackerChoice = int.Parse(Console.ReadLine());
 
                 fleet.robots[attackerChoice].Attack(herd.dinosaurs[attackChoice]);
-                //how can I get this to not print if the character is dead? Already set in the robot and dinosaur classes, but runs here
                 Console.WriteLine($"You successfully hit {herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
 
                 Random rnd = new Random();
@@ -60,7 +60,7 @@ namespace Robots_vs_Dinosaurs
                 //create special attacks for the dinosaurs to hit the robots with. Maybe a 1/10 chance of hitting with a power attack or something
 
                 Console.WriteLine(" ");
-                Console.WriteLine($"{herd.dinosaurs[randomAttack].type} successfully hit {fleet.robots[randomVictim].name} for {herd.dinosaurs[randomAttack].attackPower} damage!");
+                Console.WriteLine($"{herd.dinosaurs[randomAttack].type} successfully hit {fleet.robots[randomVictim].name}");
                 Console.WriteLine(" ");
 
                 foreach (Robot robot in fleet.robots)
@@ -72,6 +72,7 @@ namespace Robots_vs_Dinosaurs
                     Console.WriteLine($"{dinosaur.type} health is {dinosaur.health}");
                 }
                 herd.CalcHerdHp();
+                fleet.CalcFleetHp();
                 Console.ReadLine();
             }
 

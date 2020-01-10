@@ -13,7 +13,8 @@ namespace Robots_vs_Dinosaurs
         double energy;
         public double attackPower;
         Random rnd = new Random();
-        
+        int randomAttack;
+        int[] attacks = new int[3] { 15, 20, 25 };
 
         public Dinosaur(string type, double health, double energy, double attackPower)
         {
@@ -23,23 +24,38 @@ namespace Robots_vs_Dinosaurs
             this.attackPower = attackPower;
         }
 
+        public void ChooseAttack()
+        {
+            int attackChoice = rnd.Next(0, 3);
+            randomAttack = attackChoice;
+        }
+
+        //public void PickUpWeapon()
+        //{
+
+        //    Console.WriteLine("What weapon would you like to use?");
+        //    foreach (Weapon weapon in weapons)
+        //    {
+        //        Console.WriteLine(weapon.weaponName);
+        //    }
+        //    weaponChoice = int.Parse(Console.ReadLine());
+        //}
+
         public void Attack(Robot robot)
         {
+            ChooseAttack();
+
             if (robot.health > 0)
             {
-                int randomAttack = rnd.Next(1, 11);
-                if (randomAttack == 5)
+                int hitOrMiss = rnd.Next(1, 11);
+                if (hitOrMiss == 5)
                 {
                     Console.WriteLine("Your opponent's attack missed!");
                 }
                 else
                 {
-                    robot.health -= attackPower;
+                    robot.health -= attacks[randomAttack];
                 }
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that opponent is already dead");
             }
         }
 
