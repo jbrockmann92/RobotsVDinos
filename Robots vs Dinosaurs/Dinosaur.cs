@@ -12,6 +12,7 @@ namespace Robots_vs_Dinosaurs
         public double health;
         double energy;
         public double attackPower;
+        Random rnd = new Random();
         
 
         public Dinosaur(string type, double health, double energy, double attackPower)
@@ -26,7 +27,15 @@ namespace Robots_vs_Dinosaurs
         {
             if (robot.health > 0)
             {
-                robot.health -= attackPower;
+                int randomAttack = rnd.Next(1, 11);
+                if (randomAttack == 5)
+                {
+                    Console.WriteLine("Your opponent's attack missed!");
+                }
+                else
+                {
+                    robot.health -= attackPower;
+                }
             }
             else
             {

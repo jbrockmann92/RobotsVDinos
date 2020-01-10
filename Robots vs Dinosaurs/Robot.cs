@@ -17,6 +17,8 @@ namespace Robots_vs_Dinosaurs
         Weapon knife;
         Weapon mace;
         int weaponChoice;
+        Random rnd = new Random();
+
 
         public Robot(string name, double power, double health)
         {
@@ -57,16 +59,23 @@ namespace Robots_vs_Dinosaurs
         public void Attack(Dinosaur dinosaur)
         {
             PickUpWeapon();
-            power -= 15;
-            if (dinosaur.health > 0)
+            int randomRobotAttack = rnd.Next(1, 11);
+
+            if (randomRobotAttack != 5)
             {
-                dinosaur.health -= weapons[weaponChoice].damage;
+                if (dinosaur.health > 0)
+                {
+                    dinosaur.health -= weapons[weaponChoice].damage;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, that opponent is already dead");
+                }
             }
             else
             {
-                Console.WriteLine("Sorry, that opponent is already dead");
+                Console.WriteLine("Your attack missed!");
             }
-            
         }
 
         //public void Recharge()

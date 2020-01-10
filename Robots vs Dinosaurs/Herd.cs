@@ -10,10 +10,17 @@ namespace Robots_vs_Dinosaurs
     {
         public List<Dinosaur> dinosaurs;
         public double herdHP;
+        Random rnd = new Random();
 
         public Herd()
         {
-            dinosaurs = new List<Dinosaur>() { new Dinosaur("0) T-Rex", 50, 50, 35), new Dinosaur("1) Triceratops", 90, 30, 30), new Dinosaur("2) Brachiosaurus", 110, 30, 25) };
+            int rexHealth = rnd.Next(40, 56);
+            int rexPower = rnd.Next(55, 71);
+            int triHealth = rnd.Next(100, 166);
+            int triPower = rnd.Next(25, 31);
+            int brachHealth = rnd.Next(90, 111);
+            int brachPower = rnd.Next(30, 41);
+            dinosaurs = new List<Dinosaur>() { new Dinosaur("0) T-Rex", rexHealth, 50, rexPower), new Dinosaur("1) Triceratops", triHealth, 30, triPower), new Dinosaur("2) Brachiosaurus", brachHealth, 30, brachPower) };
 
             herdHP = dinosaurs[0].health + dinosaurs[1].health + dinosaurs[2].health;
         }

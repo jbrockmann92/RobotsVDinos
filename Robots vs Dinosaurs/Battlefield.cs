@@ -16,7 +16,7 @@ namespace Robots_vs_Dinosaurs
             dinoHerd = new Herd();
             robotFleet = new Fleet();
         }
-        public void RunSimulation() //master
+        public void RunSimulation() //should I put each fighter's stats up on the screen as well? Attack power, etc.?
         {
             Fleet fleet = new Fleet();
             Herd herd = new Herd();
@@ -25,7 +25,9 @@ namespace Robots_vs_Dinosaurs
             string readyOrNot = Console.ReadLine();
             if (readyOrNot == "No")
             {
+                Console.WriteLine();
                 Console.WriteLine("Too bad. We're going to play anyway");
+                Console.WriteLine();
             }
 
             while (fleet.fleetHP > 0 && herd.herdHP > 0)
@@ -49,8 +51,6 @@ namespace Robots_vs_Dinosaurs
                 //how can I get this to not print if the character is dead? Already set in the robot and dinosaur classes, but runs here
                 Console.WriteLine($"You successfully hit {herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
 
-                
-                //need to write something for the dinos to attack the robots in return. Use Random rnd = new Random();
                 Random rnd = new Random();
                 int randomAttack = rnd.Next(0, 3);
                 int randomVictim = rnd.Next(0, 3);
