@@ -11,12 +11,12 @@ namespace Robots_vs_Dinosaurs
         public double health;
         double power;
         public string name;
-        Weapon weapon;
         public Dinosaur dinosaur;
-        List<Weapon> weapons = new List<Weapon>();
+        public List<Weapon> weapons = new List<Weapon>();
         Weapon gun;
         Weapon knife;
         Weapon mace;
+        int weaponChoice;
 
         public Robot(string name, double power, double health)
         {
@@ -24,33 +24,37 @@ namespace Robots_vs_Dinosaurs
             this.power = power;
             this.health = health;
 
-            PickUpWeapon();
+            gun = new Weapon(50, "Gun");
+            knife = new Weapon(25, "Knife");
+            mace = new Weapon(75, "Mace");
+
+            weapons.Add(gun);
+            weapons.Add(knife);
+            weapons.Add(mace);
         }
+
+        //I don't think I want to pick up a weapon here. I think I want to do it either in the fleet or battlefield class
 
         public void PickUpWeapon()
         {
-            gun = new Weapon(10);
-            knife = new Weapon(5);
-            mace = new Weapon(15);
 
-            if (name == "Optimus Prime")
-            {
-                weapons.Add(gun);
-            }
-            if (name == "Wall-e")
-            {
-                weapons.Add(knife);
-            }
-            if (name == "BayMax")
-            {
-                weapons.Add(mace);
-            }
+            Console.WriteLine("What weapon would you like to use?");
+            weaponChoice = int.Parse(Console.ReadLine());
+            
+            //weapons = new List<Weapon>() { new Weapon(45, "Gun"), new Weapon(25, "Knife"), new Weapon(65, "Mace")};
+            
+            //Console.WriteLine("What weapon would you like to use?");
+            //Console.WriteLine("");
         }
+
+        //how can I call the weapon attribute generally, not just the individual gun, etc.?
+        //have player input a number for their weapon choice, then put it in the index below that has weapons[1] at the moment
 
         public void Attack(Dinosaur dinosaur)
         {
+            PickUpWeapon();
             power -= 15;
-            dinosaur.health -= gun.damage;
+            dinosaur.health -= weapons[weaponChoice].damage;
         }
 
         //public void Recharge()

@@ -13,8 +13,12 @@ namespace Robots_vs_Dinosaurs
 
         public Herd()
         {
-            dinosaurs = new List<Dinosaur>() { new Dinosaur("T-Rex", 50, 50, 10), new Dinosaur("Triceratops", 90, 30, 15), new Dinosaur("Brachiosaurus", 110, 30, 5) };
+            dinosaurs = new List<Dinosaur>() { new Dinosaur("T-Rex", 50, 50, 35), new Dinosaur("Triceratops", 90, 30, 30), new Dinosaur("Brachiosaurus", 110, 30, 25) };
 
+            herdHP = dinosaurs[0].health + dinosaurs[1].health + dinosaurs[2].health;
+        }
+        public void CalcHerdHp()
+        {
             herdHP = dinosaurs[0].health + dinosaurs[1].health + dinosaurs[2].health;
         }
     }

@@ -26,12 +26,16 @@ namespace Robots_vs_Dinosaurs
 
             while (fleet.fleetHP > 0 && herd.herdHP > 0)
             {
-                herd.dinosaurs[0].Attack(fleet.robots[0]);
-                herd.dinosaurs[1].Attack(fleet.robots[1]);
-                herd.dinosaurs[2].Attack(fleet.robots[2]);
-                fleet.robots[0].Attack(herd.dinosaurs[0]);
-                fleet.robots[1].Attack(herd.dinosaurs[1]);
-                fleet.robots[2].Attack(herd.dinosaurs[2]);
+                Console.WriteLine("Which dinosaur would you like to attack?");
+                int attackChoice = int.Parse(Console.ReadLine());
+                Console.WriteLine("Which robot would you like to attack with?");
+                int attackerChoice = int.Parse(Console.ReadLine());
+                fleet.robots[attackerChoice].Attack(herd.dinosaurs[attackChoice]);
+                Console.WriteLine("You successfully hit " + $"{herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
+                //why doesn't this one work? I should be able to put herd.dinosaurs.type or fleet.robots.name
+
+                herd.dinosaurs[attackerChoice].Attack(fleet.robots[attackChoice]);
+                    //doesn't exactly work, but fine temporarily
 
                 foreach (Robot robot in fleet.robots)
                 {
@@ -41,20 +45,14 @@ namespace Robots_vs_Dinosaurs
                 {
                     Console.WriteLine($"{dinosaur.type} health is {dinosaur.health}");
                 }
+                herd.CalcHerdHp();
                 Console.ReadLine();
-
             }
 
-            //have a loop to print off each side's stats after each turn
             Console.WriteLine("The Dinosaurs' total health is: " + herd.herdHP);
             Console.WriteLine("The Robots' total health is: " + fleet.fleetHP);
+            Console.WriteLine("The battle is over!");
             Console.ReadLine();
-
-
-            //last major step is to have the objects attack each other
-            
-
-            //JUST GET IT WORKING, THEN WORRY ABOUT THE FUN STUFF
         }
     }
 }
