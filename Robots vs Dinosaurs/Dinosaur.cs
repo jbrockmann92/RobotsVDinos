@@ -24,13 +24,17 @@ namespace Robots_vs_Dinosaurs
 
         public void Attack(Robot robot)
         {
-            if (energy >= 15)
+            if (robot.health > 0)
             {
-                energy -= 15;
                 robot.health -= attackPower;
+            }
+            else
+            {
+                Console.WriteLine("Sorry, that opponent is already dead");
             }
         }
 
+        
         //public void Rest()
         //{
         //    health += 15;

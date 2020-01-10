@@ -22,7 +22,11 @@ namespace Robots_vs_Dinosaurs
             Herd herd = new Herd();
             
             Console.WriteLine("You're on the robot team, and you'll be fighting the dinosaurs. Ready?");
-            Console.ReadLine();
+            string readyOrNot = Console.ReadLine();
+            if (readyOrNot == "No")
+            {
+                Console.WriteLine("Too bad. We're going to play anyway");
+            }
 
             while (fleet.fleetHP > 0 && herd.herdHP > 0)
             {
@@ -42,11 +46,22 @@ namespace Robots_vs_Dinosaurs
                 int attackerChoice = int.Parse(Console.ReadLine());
 
                 fleet.robots[attackerChoice].Attack(herd.dinosaurs[attackChoice]);
-                Console.WriteLine("You successfully hit " + $"{herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
-                //why doesn't this one work? I should be able to put herd.dinosaurs.type or fleet.robots.name
+                //how can I get this to not print if the character is dead? Already set in the robot and dinosaur classes, but runs here
+                Console.WriteLine($"You successfully hit {herd.dinosaurs[attackChoice].type} with {fleet.robots[attackerChoice].name}");
 
-                herd.dinosaurs[attackerChoice].Attack(fleet.robots[attackChoice]);
-                    //doesn't exactly work, but fine temporarily
+                
+                //need to write something for the dinos to attack the robots in return. Use Random rnd = new Random();
+                Random rnd = new Random();
+                int randomAttack = rnd.Next(0, 3);
+                int randomVictim = rnd.Next(0, 3);
+
+                herd.dinosaurs[randomAttack].Attack(fleet.robots[randomVictim]);
+
+                //create special attacks for the dinosaurs to hit the robots with. Maybe a 1/10 chance of hitting with a power attack or something
+
+                Console.WriteLine(" ");
+                Console.WriteLine($"{herd.dinosaurs[randomAttack].type} successfully hit {fleet.robots[randomVictim].name} for {herd.dinosaurs[randomAttack].attackPower} damage!");
+                Console.WriteLine(" ");
 
                 foreach (Robot robot in fleet.robots)
                 {

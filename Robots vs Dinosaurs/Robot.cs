@@ -58,7 +58,15 @@ namespace Robots_vs_Dinosaurs
         {
             PickUpWeapon();
             power -= 15;
-            dinosaur.health -= weapons[weaponChoice].damage;
+            if (dinosaur.health > 0)
+            {
+                dinosaur.health -= weapons[weaponChoice].damage;
+            }
+            else
+            {
+                Console.WriteLine("Sorry, that opponent is already dead");
+            }
+            
         }
 
         //public void Recharge()
