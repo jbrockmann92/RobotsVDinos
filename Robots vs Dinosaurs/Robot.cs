@@ -58,6 +58,10 @@ namespace Robots_vs_Dinosaurs
                 if (dinosaur.health > 0)
                 {
                     dinosaur.health -= weapons[weaponChoice].damage;
+                    if (dinosaur.health < 0)
+                    {
+                        dinosaur.health = 0;
+                    }
                 }
                 else
                 {

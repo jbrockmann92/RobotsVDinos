@@ -55,7 +55,16 @@ namespace Robots_vs_Dinosaurs
                 else
                 {
                     robot.health -= attacks[randomAttack];
+                    if (robot.health < 0)
+                    {
+                        robot.health = 0;
+                    }
                 }
+
+            }
+            else
+            {
+                Console.WriteLine("Your attack missed!");
             }
         }
 
